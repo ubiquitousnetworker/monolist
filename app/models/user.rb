@@ -31,14 +31,13 @@ class User < ActiveRecord::Base
   def following?(other_user)
     following_users.include?(other_user)
   end
-
+  
   def have(item)
-    have_items.create(item_id: item.id)
+    haves.find_or_create_by(item_id: item.id)
   end
   
   def unhave(item)
-    have_item = have_items.find_by(item_id: item.id)
-    have_item.destroy if have_item
+    haves.find_by(item_id: item.id).destroy
   end
 
   def have?(item)
@@ -46,12 +45,11 @@ class User < ActiveRecord::Base
   end
 
   def want(item)
-    want_items.create(item_id: item.id)
+    wants.find_or_create_by(item_id: item.id)
   end
   
   def unwant(item)
-    want_item = want_items.find_by(item_id: item.id)
-    want_item.destroy if want_item    
+    wants.find_by(item_id: item.id).destroy
   end
   
   def want?(item)
