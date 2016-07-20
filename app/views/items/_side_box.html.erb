@@ -1,0 +1,12 @@
+<div class="side-box">
+  <h4 class="side-box-title"><%= action %>したユーザー</h4>
+  <div class="side-box-body">
+    <% if ownership_users.any? %>
+      <div class="user_avatars">
+        <% ownership_users.each do |ownership_user| %>
+          <%= link_to gravatar_for(ownership_user, size: 30), ownership_user %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

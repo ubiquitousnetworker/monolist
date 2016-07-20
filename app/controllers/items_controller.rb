@@ -11,10 +11,13 @@ class ItemsController < ApplicationController
       @items = response.first(20)
     end
   end
-
+  
   def show
+    @item = Item.find(params[:id])
+    @have_users = @item.have_users
+    @want_users = @item.want_users
   end
-
+  
   private
   def set_item
     @item = Item.find(params[:id])

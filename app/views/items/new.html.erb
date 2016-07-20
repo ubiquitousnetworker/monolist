@@ -1,3 +1,8 @@
+<% provide :title, 'ログイン' %>
+<% content_for :head do %>
+  <meta name="description" content="素敵なモノと出会える場所。楽天でお買い物し
+ませんか？ログインして楽天市場を覗いてみましょう。">
+<% end %>
 <div class="search">
   <%= form_tag new_item_path , method: :get do %>
     <%= text_field_tag :q , params[:q], placeholder: "キーワードを入力", required: true %>
@@ -18,3 +23,4 @@
     </div>
   <% end %>
 </div>
+

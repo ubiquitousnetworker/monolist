@@ -1,4 +1,9 @@
+<% provide :title, @user.name + "さんのモノページ" %>
+<% content_for :head do %>
+  <meta name="description" content="<%= @user.name %>さんのモノページ。<%= @user.name %>さんの欲しいモノ、持ってるモノを表示しています。あなたも共有してみませ
+んか？">
+<% end %>
+ 
 <%= render 'profile' , user: @user %>
-
 
 <%= render 'items/list' , items: @items %>

@@ -1,35 +1,18 @@
+<% provide :title, @item.title %>
+<% content_for :head do %>
+  <meta name="description" content="<%= @item.title %>に関する情報です。この商
+品を欲しい人、持ってる人を表示しています。あなたと感性の合うユーザーさんを探してみませんか？">
+<% end %>
 <div class="container">
   <div class="container-inner inner-sm clearfix">
     <div class="item-single-main">
-      <div class="image">
-        <div class="img-wrap">
-          <% #TODO 商品イメージ %>
-          <%= image_tag("no-image.png" , alt: @item.title) %>
-        </div>
-      </div>
-      <div class="title">
-        <% #TODO 商品タイトル %>
-        仮タイトル
-      </div>
-      <%= render 'action' , item: @item %>
+      <%= render 'item_img' , item: @item %>
     </div>
     <div class="item-single-side">
-      <div class="side-box">
-        <h4 class="side-box-title">Haveしたユーザー</h4>
-        <div class="side-box-body">
-          <% # TODO Haveしたユーザー一覧 %>
-
-        </div>
-      </div>
-      <div class="side-box">
-        <h4 class="side-box-title">Wantしたユーザー</h4>
-        <div class="side-box-body">
-          <% # TODO Wantしたユーザー一覧 %>
-        </div>
-      </div>
+      <%= render partial: 'side_box', locals: { ownership_users: @item.have_users, action: 'Have'} %>
+      <%= render partial: 'side_box', locals: { ownership_users: @item.want_users, action: 'Want'} %>
       <div class="text-center">
-        <% #TODO 正しいリンク先に %>
-        <%= link_to('楽天詳細ページへ', '#') %>
+        <%= link_to "楽天詳細ページへ", @item.detail_page_url %>
       </div>
     </div>
   </div>
