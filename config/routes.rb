@@ -14,10 +14,12 @@ Rails.application.routes.draw do
   end
   resources :sessions, only: [:new, :create, :destroy]
   resources :relationships, only: [:create, :destroy]
-#  resources :ownerships, only: [:create, :destroy]
   resources :ownerships, only: [:create, :destroy]
   
   resources :items , only: [:new, :show]
+  
+  get 'ranking/have'
+  get 'ranking/want'
   
   
   # The priority is based upon order of creation: first created -> highest priority.
